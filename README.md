@@ -1,6 +1,7 @@
 1)Клонируйте проект
 
 2)В корневой директории проекта выполните следующие команды:
+
     2.1 php bin/console server:start
 
     2.2 php bin/console doctrine:database:drop --force (Это в случае, если БД уже была создана ранее)
