@@ -1,0 +1,39 @@
+<html>
+{% include 'template_css_js' %}
+<body>
+<h3>Login: {{ user.getLogin() }}</h3>
+<ul>
+    {% for error in errors %}
+        <li>{{ error.message }}</li>
+    {% endfor %}
+</ul>
+<form role="form" method="post" action="/user/{{ user.getId() }}">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="firstnane">Firstname</label>
+            <input type="text" class="form-control" id="firstnane"  name = "firstname" value="{{ user.getFirstName() }}">
+        </div>
+        <div class="form-group">
+            <label for="firstnane">Lastname</label>
+            <input type="text" class="form-control" id="lastname"  name = "lastname" value="{{ user.getLastName() }}">
+        </div>
+        <div class="form-group">
+            <label for="birthday">Birthday</label>
+            <input type="date" class="form-control" id="birthday"  name = "birthday" value="{{ user.getBirthday()|date("Y-m-d") }}">
+        </div>
+        <div class="form-group">
+            <label for="interests">Interests</label>
+                {% for userInterst in user_interests %}
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="interests[]" value="{{ userInterst.interest }}" {{ userInterst.checked }}>{{ userInterst.interest }}</label>
+                        </div>
+                {% endfor %}
+        </div>
+        <input type="submit" class="btn btn-success" name="submit" value="Edit"/>
+    </div>
+    <div class="col-sm-6">
+        {% include 'exit' %}
+    </div>
+</form>
+</body>
+</html>

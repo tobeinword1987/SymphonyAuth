@@ -1,0 +1,29 @@
+<html>
+{% include 'template_css_js' %}
+<body>
+<h3>Authorization</h3>
+<ul>
+    {% for error in errors %}
+        <li>{{ error.message }}</li>
+    {% endfor %}
+    {% if user_error is not empty %}
+        <li>{{ user_error }}</li>
+    {% endif %}
+</ul>
+<form role="form" method="post">
+    <div class="col-sm-6">
+        <div class="form-group">
+                <label for="login">Login</label>
+                <input type="text" class="form-control" id="login" placeholder="Введите login" name = "login" value="{{ request.get('login') }}">
+                <p class="help-block">It can be your email</p>
+        </div>
+        <div class="form-group">
+            <label for="password">Пароль</label>
+            <input type="password" class="form-control" id="password" placeholder="введите пароль" name = "password" value="{{ request.get('password') }}">
+        </div>
+        <input type="submit" class="btn btn-success" name="submit" value="Sign"/>
+        <input type="submit" class="btn btn-success" name="submit" value="Registry"/>
+    </div>
+</form>
+</body>
+</html>
